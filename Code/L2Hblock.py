@@ -21,11 +21,11 @@ class CSFblock(nn.Module):
 
         self.softmax = nn.Softmax(dim=2)
 
-    def forward(self, inputs):  # 接收包含多个输入的列表
-        # 解包输入列表（假设输入是 [x_h, x_l]）
+    def forward(self, inputs): 
+
         if len(inputs) != 2:
             raise ValueError("CSFblock requires exactly 2 input tensors.")
-        High, Low = inputs[0], inputs[1]  # 提取两个输入张量
+        High, Low = inputs[0], inputs[1] 
         #x1 = torch.Size([1, 256, 40, 40])
         #x2 = torch.Size([1, 128, 40, 40])
 
@@ -34,7 +34,7 @@ class CSFblock(nn.Module):
 
         key_H = self.AdaptiveAvgPool2d_1(N_High)
         key_L = self.AdaptiveAvgPool2d_2(N_Low)
-        """x_se1和x_se2的值是不同的，它们拥有独立的权重参数"""
+
 
         key_twice = torch.cat([key_H, key_L], 2)
 
@@ -65,7 +65,7 @@ if __name__ == "__main__":
         output_shape = output.shape
 
     print(f" {params:,}")
-    #print(f"计算量(FLOPs): {flops:,}")
+    #print(f"FLOPs: {flops:,}")
     print(f" {output_shape}")
 
 
