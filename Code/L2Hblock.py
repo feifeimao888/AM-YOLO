@@ -4,14 +4,6 @@ import torch.nn as nn
 from torch.profiler import profile, ProfilerActivity
 from thop import profile
 
-##########################################################################################################################
-"""
-【my】
-【高阶 低阶 都上升】
-加Bn
-
-最后用加法
-"""
 
 class CSFblock(nn.Module):
     def __init__(self, high_channels, low_channels,outChannels):
